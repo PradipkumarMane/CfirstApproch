@@ -1,0 +1,124 @@
+﻿@model CfirstApproch.Models.Employee
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(to right, rgba(58, 123, 213, 0.8), rgba(0, 210, 255, 0.8));
+            font-family: 'Arial', sans-serif;
+            color: white;
+        }
+
+        .details-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.8s ease-out;
+            max-width: 700px;
+            margin: 50px auto;
+        }
+
+        .details-container h1 {
+            color: #333;
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .details-container h4 {
+            color: #555;
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .details-container hr {
+            border-top: 2px solid #ccc;
+        }
+
+        .details-container dl {
+            font-size: 18px;
+            color: #333;
+            text-align:center;
+        }
+
+        .details-container dt {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .details-container dd {
+            margin-bottom: 15px;
+            color: #777;
+        }
+
+        .details-container a {
+            text-decoration: none;
+            font-size: 16px;
+            color: #007bff;
+            margin-right: 10px;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .details-container a:hover {
+            color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .details-container .btn {
+            font-size: 16px;
+            padding: 10px;
+            margin-top: 15px;
+            border-radius: 5px;
+            background: #007bff;
+            color: white;
+            border: none;
+            text-align:center;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .details-container .btn:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+            color:black
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="details-container">
+            <h1>Employee Details</h1>
+            @* <h4>Employee</h4> *@
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Name)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Name)</dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Gender)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Gender)</dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Age)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Age)</dd>
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.City)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.City)</dd>
+            </dl>
+            <div>
+                <a asp-action="Edit" asp-route-id="@Model?.ID" class="btn">Edit</a>
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

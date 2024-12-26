@@ -1,0 +1,169 @@
+﻿@model IEnumerable<CfirstApproch.Models.Employee>
+
+@{
+    ViewData["Title"] = "Employee Information";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(to right, rgba(0, 123, 255, 0.8), rgba(40, 167, 69, 0.8));
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .table-container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .table thead th {
+            background: #007bff;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .table tbody td {
+            padding: 15px;
+            padding-left:5px;
+            vertical-align: middle;
+            margin:auto;
+            text-align:center;
+        }
+
+
+
+        .table tbody td {
+        padding: 15px;
+        vertical-align: middle;
+        text-align: center; /* Align text to center */
+    }
+
+    /* Styling for td containing action buttons */
+    .table tbody td a {
+        text-decoration: none;
+        color: black;
+        padding: 8px 15px;
+        font-size: 14px;
+        font-weight: bold;
+        border-radius: 5px;
+        transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    /* Edit Button */
+    .table tbody td a:first-child {
+        background-color: #007bff;
+        border: 1px solid #007bff;
+    }
+    .table tbody td a:first-child:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+    }
+
+    /* Details Button */
+    .table tbody td a:nth-child(2) {
+        background-color: #28a745;
+        border: 1px solid #28a745;
+    }
+    .table tbody td a:nth-child(2):hover {
+        background-color: #1e7e34;
+        transform: scale(1.05);
+    }
+
+    /* Delete Button */
+    .table tbody td a:last-child {
+        background-color: #dc3545;
+        border: 1px solid #dc3545;
+    }
+    .table tbody td a:last-child:hover {
+        background-color: #bd2130;
+        transform: scale(1.05);
+    }
+
+        .table tbody tr {
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+            .table tbody tr:hover {
+                transform: scale(1.02);
+                background: rgba(40, 167, 69, 0.2);
+            }
+
+        .btn-create {
+            background: #28a745;
+            color: white;
+            border: none;
+            transition: background 0.3s ease;
+        }
+
+            .btn-create:hover {
+                background: #218838;
+            }
+
+        .title-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+            .title-container img {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+    </style>
+</head>
+<body>
+    <div class="container my-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div class="title-container">
+                <img src="https://cdn.theorg.com/74686861-4741-4bfa-afe4-abf6121472ba_medium.jpg" alt="Index Icon">
+                <h1 class="mb-0">@ViewData["Title"]</h1>
+            </div>
+            <a asp-action="Create" class="btn btn-create">Create New</a>
+        </div>
+
+        <div class="table-container">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Name)</th>
+                        <th>@Html.DisplayNameFor(model => model.Gender)</th>
+                        <th>@Html.DisplayNameFor(model => model.Age)</th>
+                        <th>@Html.DisplayNameFor(model => model.City)</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Gender)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Age)</td>
+                            <td>@Html.DisplayFor(modelItem => item.City)</td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.ID" class="me-2">Edit</a>
+                                <a asp-action="Details" asp-route-id="@item.ID" class="me-2">Details</a>
+                                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

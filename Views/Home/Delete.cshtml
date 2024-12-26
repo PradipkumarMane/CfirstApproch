@@ -1,0 +1,123 @@
+﻿@model CfirstApproch.Models.Employee
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(to right, rgba(220, 53, 69, 0.8), rgba(255, 193, 7, 0.8));
+            color: black;
+            font-family: Arial, sans-serif;
+        }
+
+        .delete-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease;
+        }
+
+            .delete-container h3 {
+                color: #dc3545;
+                font-size: 24px;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .delete-container h4 {
+                color: #333;
+                font-size: 20px;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+            .delete-container dl {
+                margin-bottom: 20px;
+            }
+
+            .delete-container dt {
+                font-weight: bold;
+                color: #555;
+            }
+
+            .delete-container dd {
+                margin-bottom: 10px;
+                color: #777;
+            }
+
+            .delete-container .btn {
+                font-size: 16px;
+                padding: 10px;
+                width: auto;
+                margin-top: 15px;
+            }
+
+            .delete-container .btn-danger {
+                background-color: #dc3545;
+                border-color: #dc3545;
+                transition: background 0.3s, transform 0.2s;
+            }
+
+                .delete-container .btn-danger:hover {
+                    background-color: #c82333;
+                    border-color: #bd2130;
+                    transform: scale(1.05);
+                }
+
+            .delete-container .back-link {
+                font-size: 14px;
+                color: #007bff;
+                text-decoration: none;
+                margin-left: 10px;
+                transition: color 0.3s;
+            }
+
+                .delete-container .back-link:hover {
+                    color: #0056b3;
+                }
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 d-flex justify-content-center">
+        <div class="col-md-6 delete-container">
+            <h1 class="text-center">@ViewData["Title"]</h1>
+            <h3>Are you sure you want to delete this?</h3>
+            <h4>Employee</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-4">Name</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Name)</dd>
+
+                <dt class="col-sm-4">Gender</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Gender)</dd>
+
+                <dt class="col-sm-4">Age</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Age)</dd>
+
+                <dt class="col-sm-4">City</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.City)</dd>
+            </dl>
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="ID" />
+                <div class="d-flex justify-content-between">
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                    <a asp-action="Index" class="back-link">Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

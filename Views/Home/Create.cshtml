@@ -1,0 +1,124 @@
+﻿ @model CfirstApproch.Models.Employee
+@{
+    ViewData["Title"] = "Create";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(to right, rgba(0, 123, 255, 0.8), rgba(40, 167, 69, 0.8));
+            color: black;
+            font-family: Arial, sans-serif;
+        }
+
+        .employee-form {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease;
+        }
+
+            .employee-form h4 {
+                color: #333;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .employee-form .form-group {
+                margin-bottom: 20px;
+            }
+
+            .employee-form .form-control {
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                padding: 10px;
+                transition: border-color 0.3s, box-shadow 0.3s;
+            }
+
+                .employee-form .form-control:focus {
+                    border-color: #007bff;
+                    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+                }
+
+            .employee-form .btn {
+                width: 100%;
+                padding: 12px;
+                font-size: 16px;
+                background: #28a745;
+                border: none;
+                color: white;
+                border-radius: 5px;
+                transition: background 0.3s ease;
+            }
+
+                .employee-form .btn:hover {
+                    background: #218838;
+                }
+
+            .employee-form a {
+                display: block;
+                text-align: center;
+                margin-top: 15px;
+                text-decoration: none;
+                color: #007bff;
+                font-size: 14px;
+                transition: color 0.3s ease;
+            }
+
+                .employee-form a:hover {
+                    color: #0056b3;
+                }
+
+    </style>
+</head>
+<body>
+    <div class="container my-5 d-flex justify-content-center">
+        <div class="col-md-6 employee-form">
+            <h1 class="text-center">@ViewData["Title"]</h1>
+            <h4>Employee</h4>
+            <hr />
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="form-label">Name</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Gender" class="form-label">Gender</label>
+                    <input asp-for="Gender" class="form-control" />
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Age" class="form-label">Age</label>
+                    <input asp-for="Age" class="form-control" />
+                    <span asp-validation-for="Age" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="City" class="form-label">City</label>
+                    <input asp-for="City" class="form-control" />
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-success" />
+                </div>
+            </form>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+</body>
+</html>
